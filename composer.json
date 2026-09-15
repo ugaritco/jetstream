@@ -1,0 +1,71 @@
+{
+    "name": "ugarit/jetstream",
+    "description": "Tailwind scaffolding for the Ugarit framework.",
+    "keywords": [
+        "ugarit",
+        "tailwind",
+        "auth"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/ugarit/jetstream/issues",
+        "source": "https://github.com/ugarit/jetstream"
+    },
+    "authors": [
+        {
+            "name": "Muath R Abu Ouda",
+            "email": "muathrabuouda@hotmail.com",
+            "role": "Vision Leader of Ugarit"
+        },
+        {
+            "name": "Taylor Otwell",
+            "email": "taylor@laravel.com",
+            "role": "Original Creator & Primary Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2.0",
+        "ext-json": "*",
+        "heritage/console": "^1.00.00",
+        "heritage/support": "^1.00.00",
+        "ugarit/fortify": "^1.00.00",
+        "mobiledetect/mobiledetectlib": "^4.8.08",
+        "symfony/console": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "inertiajs/inertia-ugarit": "^2.0",
+        "ugarit/sanctum": "^1.00.00",
+        "livewire/livewire": "^3.3",
+        "mockery/mockery": "^1.0",
+        "orchestra/testbench": "^9.15|^10.8|^11.0",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ugarit\\Jetstream\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ugarit\\Jetstream\\Tests\\": "tests/",
+            "App\\": "stubs/app/",
+            "Database\\Factories\\": "database/factories/"
+        }
+    },
+    "extra": {
+        "ugarit": {
+            "providers": [
+                "Ugarit\\Jetstream\\JetstreamServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "audit": {
+            "block-insecure": false
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "1.00.00"
+}

@@ -1,0 +1,11 @@
+providers:
+  - Ugarit\Fortify\FortifyServiceProvider
+  - Ugarit\Jetstream\JetstreamServiceProvider
+  - Livewire\LivewireServiceProvider
+
+migrations:
+  - database/migrations
+  - vendor/ugarit/fortify/database/migrations
+
+workbench:
+  install: false

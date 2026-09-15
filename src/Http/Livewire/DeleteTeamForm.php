@@ -1,0 +1,67 @@
+<?php
+
+namespace Ugarit\Jetstream\Http\Livewire;
+
+use Heritage\Support\Facades\Auth;
+use Ugarit\Jetstream\Actions\ValidateTeamDeletion;
+use Ugarit\Jetstream\Contracts\DeletesTeams;
+use Ugarit\Jetstream\RedirectsActions;
+use Livewire\Component;
+
+class DeleteTeamForm extends Component
+{
+    use RedirectsActions;
+
+    /**
+     * The team instance.
+     *
+     * @var mixed
+     */
+    public $team;
+
+    /**
+     * Indicates if team deletion is being confirmed.
+     *
+     * @var bool
+     */
+    public $confirmingTeamDeletion = false;
+
+    /**
+     * Mount the component.
+     *
+     * @param  mixed  $team
+     * @return void
+     */
+    public function mount($team)
+    {
+        $this->team = $team;
+    }
+
+    /**
+     * Delete the team.
+     *
+     * @param  \Ugarit\Jetstream\Actions\ValidateTeamDeletion  $validator
+     * @param  \Ugarit\Jetstream\Contracts\DeletesTeams  $deleter
+     * @return mixed
+     */
+    public function deleteTeam(ValidateTeamDeletion $validator, DeletesTeams $deleter)
+    {
+        $validator->validate(Auth::user(), $this->team);
+
+        $deleter->delete($this->team);
+
+        $this->team = null;
+
+        return $this->redirectPath($deleter);
+    }
+
+    /**
+     * Render the component.
+     *
+     * @return \Heritage\View\View
+     */
+    public function render()
+    {
+        return view('teams.delete-team-form');
+    }
+}
